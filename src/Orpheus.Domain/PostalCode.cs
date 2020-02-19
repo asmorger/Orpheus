@@ -17,5 +17,7 @@ namespace Orpheus.Domain
             
             return new PostalCode(value!);
         }
+
+        public static implicit operator string(PostalCode code) => code.Value;
     }
 }

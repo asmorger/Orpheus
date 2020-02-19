@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus.Domain", "Orpheus.Domain\Orpheus.Domain.csproj", "{F47BCDAF-FF6A-426F-AC35-222D109D3D27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus.Application", "Orpheus.Application\Orpheus.Application.csproj", "{D1FE594B-F10B-45F0-80CA-2215FB74840A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orpheus.Application.Tests", "..\tests\Orpheus.Application.Tests\Orpheus.Application.Tests.csproj", "{75ECD76A-0775-46C3-8F1F-5C7DD4A4FA2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{777A6AF1-243D-4D0A-B157-AB8260C3F000}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,16 @@ Global
 		{F47BCDAF-FF6A-426F-AC35-222D109D3D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F47BCDAF-FF6A-426F-AC35-222D109D3D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F47BCDAF-FF6A-426F-AC35-222D109D3D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1FE594B-F10B-45F0-80CA-2215FB74840A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1FE594B-F10B-45F0-80CA-2215FB74840A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1FE594B-F10B-45F0-80CA-2215FB74840A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1FE594B-F10B-45F0-80CA-2215FB74840A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75ECD76A-0775-46C3-8F1F-5C7DD4A4FA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75ECD76A-0775-46C3-8F1F-5C7DD4A4FA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75ECD76A-0775-46C3-8F1F-5C7DD4A4FA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75ECD76A-0775-46C3-8F1F-5C7DD4A4FA2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75ECD76A-0775-46C3-8F1F-5C7DD4A4FA2B} = {777A6AF1-243D-4D0A-B157-AB8260C3F000}
 	EndGlobalSection
 EndGlobal

@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Calliope" Version="1.0.3-alpha" />
+      <ProjectReference Include="..\Orpheus.Domain\Orpheus.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="8.0.0" />
     </ItemGroup>
 
 </Project>

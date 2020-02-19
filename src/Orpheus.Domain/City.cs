@@ -17,5 +17,7 @@ namespace Orpheus.Domain
             
             return new City(value!);
         }
+
+        public static implicit operator string(City city) => city.Value;
     }
 }

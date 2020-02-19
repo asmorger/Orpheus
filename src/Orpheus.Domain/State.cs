@@ -16,5 +16,7 @@ namespace Orpheus.Domain
             
             return new State(value!);
         }
+
+        public static implicit operator string(State state) => state.Value;
     }
 }
