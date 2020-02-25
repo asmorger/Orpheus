@@ -5,9 +5,7 @@ namespace Orpheus.Domain
 {
     public class PostalCode : PrimitiveValue<string, PostalCode, PostalCodeValidator>
     {
-        private PostalCode(string value) : base(value)
-        {
-        }
+        private PostalCode(string value) : base(value) { }
 
         public static PostalCode Create(string value) => Create(value, x => new PostalCode(x));
 
