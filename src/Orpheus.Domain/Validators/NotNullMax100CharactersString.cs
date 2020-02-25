@@ -1,0 +1,9 @@
+using Calliope.Validators;
+
+namespace Orpheus.Domain.Validators
+{
+    public class NotNullMax100CharactersString : NotEmptyStringValidator
+    {
+        public NotNullMax100CharactersString() : base(1,100) { }
+    }
+}

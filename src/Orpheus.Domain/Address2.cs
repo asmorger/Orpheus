@@ -1,24 +1,21 @@
-using System;
 using Calliope;
+using Calliope.Validators;
 
 namespace Orpheus.Domain
 {
-    public class Address2 : PrimitiveValue<string>
+    public class Address2 : PrimitiveValue<string, Address2, Address2Validator>
     {
-        public static readonly Address2 Empty = new Address2(string.Empty);
-
         private Address2(string value) : base(value)
         {
         }
-        
-        public static Address2 Parse(string? value)
-        {
-            if (string.IsNullOrWhiteSpace(value)) return Empty;
-            if (value.Length > 100) throw new ArgumentException();
-            
-            return new Address2(value);
-        }
+
+        public static Address2 Create(string value) => Create(value, x => new Address2(value));
 
         public static implicit operator string(Address2 value) => value.Value;
+    }
+
+    public class Address2Validator : NullableStringValidator
+    {
+        public Address2Validator() : base(0, 100) { }
     }
 }

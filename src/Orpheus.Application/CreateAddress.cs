@@ -27,13 +27,13 @@ namespace Orpheus.Application
     {
         public Task<Address> Handle(CreateAddress request, CancellationToken cancellationToken)
         {
-            var address1 = Address1.Parse(request.Address1);
-            var address2 = Address2.Parse(request.Address2);
-            var city = City.Parse(request.City);
-            var state = State.Parse(request.State);
-            var postalCode = PostalCode.Parse(request.PostalCode);
+            var address1 = Address1.Create(request.Address1);
+            var address2 = Address2.Create(request.Address2);
+            var city = City.Create(request.City);
+            var state = State.Create(request.State);
+            var postalCode = PostalCode.Create(request.PostalCode);
 
-            var result = new Address(address1, address2, city, state, postalCode);
+            var result = Address.Create(address1, address2, city, state, postalCode);
 
             return Task.FromResult(result);
         }

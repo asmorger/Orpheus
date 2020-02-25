@@ -50,11 +50,11 @@ namespace Orpheus.Application.Tests.Builders
                 Option<string?> state, Option<string?> postalCode)
             {
                 CustomInstantiator(f => new CreateAddress(
-                    address1.Match(s => s, () => f.Address.StreetAddress()),
-                    address2.Match(s => s, () => f.Address.SecondaryAddress()),
-                    city.Match(s => s, () => f.Address.City()),
-                    state.Match(s => s, () => f.Address.StateAbbr()),
-                    postalCode.Match(s => s, () => f.Address.ZipCode())
+                    address1.ValueOrFallback(() => f.Address.StreetAddress()),
+                    address2.ValueOrFallback(() => f.Address.SecondaryAddress()),
+                    city.ValueOrFallback(() => f.Address.City()),
+                    state.ValueOrFallback(() => f.Address.StateAbbr()),
+                    postalCode.ValueOrFallback(() => f.Address.ZipCode())
                     ));
             }
         }

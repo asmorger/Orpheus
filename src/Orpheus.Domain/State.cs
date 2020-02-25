@@ -1,21 +1,15 @@
-using System;
 using Calliope;
+using Orpheus.Domain.Validators;
 
 namespace Orpheus.Domain
 {
-    public class State : PrimitiveValue<string>
+    public class State : PrimitiveValue<string, State, NotNullMax100CharactersString>
     {
         private State(string value) : base(value)
         {
         }
-        
-        public static State Parse(string? value)
-        {
-            if(string.IsNullOrEmpty(value)) throw new ArgumentException();
-            if(value!.Length != 2) throw new ArgumentException();
-            
-            return new State(value!);
-        }
+
+        public static State Create(string value) => Create(value, x => new State(x));
 
         public static implicit operator string(State state) => state.Value;
     }

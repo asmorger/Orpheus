@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Calliope.Monads;
 using Orpheus.Application.Tests.Builders;
+using Orpheus.Domain;
 using Xunit;
 
 namespace Orpheus.Application.Tests
@@ -55,7 +58,10 @@ namespace Orpheus.Application.Tests
                 var address = _builder.WithAddress2(address2).Generate();
                 var result = await _handler.Handle(address, CancellationToken.None);
 
-                Assert.Equal(address.Address2, result.Address2);
+                var resultValue = result.Address2 as Some<Address2>;
+
+                Assert.NotNull(resultValue);
+                Assert.Equal(address.Address2, resultValue.Value);
             }
 
             [Theory, MemberData(nameof(GetStandardInvalidStrings))]

@@ -1,17 +1,18 @@
 using System.Collections.Generic;
 using Calliope;
+using Calliope.Monads;
 
 namespace Orpheus.Domain
 {
-    public class Address : Value
+    public class Address : Value<Address>
     {
         public Address1 Address1 { get; }
-        public Address2 Address2 { get; }
+        public Option<Address2> Address2 { get; }
         public City City { get; }
         public State State { get; }
         public PostalCode PostalCode { get; }
 
-        public Address(Address1 address1, Address2 address2, City city, State state, PostalCode postalCode)
+        private Address(Address1 address1, Option<Address2> address2, City city, State state, PostalCode postalCode)
         {
             Address1 = address1;
             Address2 = address2;
@@ -19,6 +20,10 @@ namespace Orpheus.Domain
             State = state;
             PostalCode = postalCode;
         }
+        
+        public static Address Create(Address1 address1, Address2 address2, City city, State state, PostalCode postalCode) =>
+            new Address(address1, address2, city, state, postalCode);
+        
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Address1;
