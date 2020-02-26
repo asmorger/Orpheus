@@ -1,5 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
+using Calliope.FluentValidation;
+using FluentValidation;
 using MediatR;
 using Orpheus.Domain;
 
@@ -7,7 +9,7 @@ namespace Orpheus.Application
 {
     public class CreateAddress : IRequest<Address>
     {
-        public CreateAddress(string? address1, string? address2, string? city, string? state, string? postalCode)
+        public CreateAddress(string address1, string address2, string city, string state, string postalCode)
         {
             Address1 = address1;
             Address2 = address2;
@@ -16,11 +18,23 @@ namespace Orpheus.Application
             PostalCode = postalCode;
         }
 
-        public string? Address1 { get; }
-        public string? Address2 { get; }
-        public string? City { get; }
-        public string? State { get; }
-        public string? PostalCode { get; }
+        public string Address1 { get; }
+        public string Address2 { get; }
+        public string City { get; }
+        public string State { get; }
+        public string PostalCode { get; }
+    }
+
+    public class CreateAddressValidator : AbstractValidator<CreateAddress>
+    {
+        public CreateAddressValidator()
+        {
+            RuleFor(x => x.Address1).ForDomainValue(Address1.GetValidator());
+            RuleFor(x => x.Address2).ForDomainValue(Address2.GetValidator());
+            RuleFor(x => x.City).ForDomainValue(City.GetValidator());
+            RuleFor(x => x.State).ForDomainValue(State.GetValidator());
+            RuleFor(x => x.PostalCode).ForDomainValue(PostalCode.GetValidator());
+        }
     }
     
     public class CreateAddressHandler : IRequestHandler<CreateAddress, Address>
