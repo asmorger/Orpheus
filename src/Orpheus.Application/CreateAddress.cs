@@ -29,11 +29,11 @@ namespace Orpheus.Application
     {
         public CreateAddressValidator()
         {
-            RuleFor(x => x.Address1).Targeting(Address1.Validator);
-            RuleFor(x => x.Address2).Targeting(Address2.Validator);
-            RuleFor(x => x.City).Targeting(City.Validator);
-            RuleFor(x => x.State).Targeting(State.Validator);
-            RuleFor(x => x.PostalCode).Targeting(PostalCode.Validator);
+            RuleFor(x => x.Address1).TargetingValue(Address1.Validator);
+            RuleFor(x => x.Address2).TargetingValue(Address2.Validator);
+            RuleFor(x => x.City).TargetingValue(City.Validator);
+            RuleFor(x => x.State).TargetingValue(State.Validator);
+            RuleFor(x => x.PostalCode).TargetingValue(PostalCode.Validator);
         }
     }
     

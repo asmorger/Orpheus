@@ -1,15 +1,15 @@
 using Bogus;
-using Calliope.Monads;
+using Calliope;
 
 namespace Orpheus.Application.Tests.Builders
 {
     public class CreateAddressCommandBuilder
     {
-        private Option<string> Address1 { get; set; } = None.Value;
-        private Option<string> Address2 { get; set; } = None.Value;
-        private Option<string> City { get; set; } = None.Value;
-        private Option<string> State { get; set; } = None.Value;
-        private Option<string> PostalCode { get; set; } = None.Value;
+        private Optional<string> Address1 { get; set; } = Optional<string>.None;
+        private Optional<string> Address2 { get; set; } = Optional<string>.None;
+        private Optional<string> City { get; set; } = Optional<string>.None;
+        private Optional<string> State { get; set; } = Optional<string>.None;
+        private Optional<string> PostalCode { get; set; } = Optional<string>.None;
 
         public CreateAddress Generate() =>
             new CreateAddressFaker(Address1, Address2, City, State, PostalCode).Generate();
@@ -46,15 +46,15 @@ namespace Orpheus.Application.Tests.Builders
         
         internal class CreateAddressFaker : Faker<CreateAddress>
         {
-            internal CreateAddressFaker(Option<string> address1, Option<string> address2, Option<string> city, 
-                Option<string> state, Option<string> postalCode)
+            internal CreateAddressFaker(Optional<string> address1, Optional<string> address2, Optional<string> city, 
+                Optional<string> state, Optional<string> postalCode)
             {
                 CustomInstantiator(f => new CreateAddress(
-                    address1.ValueOrFallback(() => f.Address.StreetAddress()),
-                    address2.ValueOrFallback(() => f.Address.SecondaryAddress()),
-                    city.ValueOrFallback(() => f.Address.City()),
-                    state.ValueOrFallback(() => f.Address.StateAbbr()),
-                    postalCode.ValueOrFallback(() => f.Address.ZipCode())
+                    address1.Unwrap(() => f.Address.StreetAddress()),
+                    address2.Unwrap(() => f.Address.SecondaryAddress()),
+                    city.Unwrap(() => f.Address.City()),
+                    state.Unwrap(() => f.Address.StateAbbr()),
+                    postalCode.Unwrap(() => f.Address.ZipCode())
                     ));
             }
         }

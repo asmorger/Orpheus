@@ -1,18 +1,17 @@
 using System.Collections.Generic;
 using Calliope;
-using Calliope.Monads;
 
 namespace Orpheus.Domain
 {
     public class Address : Value<Address>
     {
         public Address1 Address1 { get; }
-        public Option<Address2> Address2 { get; }
+        public Optional<Address2> Address2 { get; }
         public City City { get; }
         public State State { get; }
         public PostalCode PostalCode { get; }
 
-        private Address(Address1 address1, Option<Address2> address2, City city, State state, PostalCode postalCode)
+        private Address(Address1 address1, Optional<Address2> address2, City city, State state, PostalCode postalCode)
         {
             Address1 = address1;
             Address2 = address2;

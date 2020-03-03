@@ -3,7 +3,7 @@ using Calliope.Validators;
 
 namespace Orpheus.Domain
 {
-    public class PostalCode : PrimitiveValue<string, PostalCode, PostalCodeValidator>
+    public class PostalCode : Value<string, PostalCode, PostalCodeValidator>
     {
     }
 
